@@ -63,7 +63,7 @@
   </script>
 <script>
 var x = document.getElementById("title");
-function getLocation() {
+$( document ).ready(function() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
