@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Park N Pass</title>
+  <title id="title">Park N Pass</title>
   <style>
     .search {
       text-align: center;
@@ -61,5 +61,20 @@
       }
     };
   </script>
+<script>
+var x = document.getElementById("title");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; 
+}
+</script>
 </body>
+
 </html>
