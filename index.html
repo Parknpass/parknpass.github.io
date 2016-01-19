@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Algolia | User Search</title>
+  <style>
+    .search {
+      text-align: center;
+    }
+    .search input {
+      font-size: 20px;
+      width: 300px;
+    }
+    .results {
+      margin: auto;
+      text-align: center;
+    }
+    .results ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="search">
+    <h1>Search users in real time</h1>
+    <input type="text">
+  </div>
+  <div class="results">
+    <ul id="users"></ul>
+  </div>
+
+  <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script>
+    var $input = $('input');
+    var $users = $('#users');
+
+
+    $(document).ready(function() {
+      var client = algoliasearch('<APPLICATION ID>', '<SEARCH-ONLY API KEY>');
+      var index = client.initIndex('<INDEX NAME>');
+
+      $input.keyup(function() {
+        index.search($input.val(), {
+          hitsPerPage: 10,
+          facets: '*'
+        }, searchCallback);
+      }).focus();
+    });
+
+    function searchCallback(err, content) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      $users.empty();
+
+      for (var i = 0; i < content.hits.length; i++) {
+        $users.append('<li>' + content.hits[i].name + '</li>');
+      }
+    };
+  </script>
+</body>
+</html>
