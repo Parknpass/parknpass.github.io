@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title >Park N Pass</title>
+<meta charset=utf-8 />
+<title>Geolocation</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
@@ -9,6 +10,8 @@
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
 </style>
+</head>
+<body>
 <style>
 .ui-button {
   background:#3887BE;
@@ -29,34 +32,8 @@
     color:#fff;
     }
 </style>
-  <style>
-    .search {
-      text-align: center;
-    }
-    .search input {
-      font-size: 20px;
-      width: 300px;
-    }
-    .results {
-      margin: auto;
-      text-align: center;
-    }
-    .results ul {
-      list-style-type: none;
-      padding: 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="search">
-    <h1 id="title" >Park N Pass</h1>
-    <input type="text">
-  </div>
-  <div class="results">
-    <ul id="users"></ul>
-  </div>
-  
-  
+
+<div id='map'></div>
 <a href='#' id='geolocate' class='ui-button'>Find me</a>
 
 <script>
