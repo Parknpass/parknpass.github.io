@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
   <title >Park N Pass</title>
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.3/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
   <style>
     .search {
       text-align: center;
@@ -28,6 +35,18 @@
   <div class="results">
     <ul id="users"></ul>
   </div>
+  
+  
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoieGx5bmt6IiwiYSI6Ik8yb0ZSUzAifQ.G-ghkgJ7KhNfMwDPwmtRoQ';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v8', //stylesheet location
+    center: [-74.50, 40], // starting position
+    zoom: 9 // starting zoom
+});
+</script>
 
   <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
